@@ -110,6 +110,12 @@ h2 {
   text-align: right;
 }
 
+.creator-credit {
+  color: #f8fafc;
+  font-size: 15px;
+  font-weight: 800;
+}
+
 .download-link {
   display: inline-flex;
   align-items: center;
