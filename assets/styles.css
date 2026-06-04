@@ -418,6 +418,38 @@ table {
   border-collapse: collapse;
 }
 
+.campaign-priority-table {
+  min-width: 980px;
+  table-layout: fixed;
+}
+
+.campaign-priority-table .col-platform {
+  width: 116px;
+}
+
+.campaign-priority-table .col-campaign {
+  width: 230px;
+}
+
+.campaign-priority-table .col-objective {
+  width: 136px;
+}
+
+.campaign-priority-table .col-spend,
+.campaign-priority-table .col-conversions {
+  width: 126px;
+}
+
+.campaign-priority-table .col-cpa {
+  width: 106px;
+}
+
+.campaign-priority-table .col-ctr,
+.campaign-priority-table .col-cvr,
+.campaign-priority-table .col-roas {
+  width: 88px;
+}
+
 th,
 td {
   padding: 13px 11px;
