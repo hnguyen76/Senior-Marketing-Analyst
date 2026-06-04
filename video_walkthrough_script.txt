@@ -1,0 +1,86 @@
+Senior Marketing Analyst Dashboard - Video Walkthrough Script
+Created by Hieu Nguyen
+
+Suggested length: 3 to 5 minutes
+
+Opening
+Hello, my name is Hieu Nguyen. In this walkthrough, I am presenting a static cross-channel paid media dashboard built from three ad platform exports: Facebook Ads, Google Ads, and TikTok Ads.
+
+The goal of this project is to show how I can combine multiple marketing datasets, clean inconsistent schemas, calculate standardized KPIs, and turn the results into a business-ready dashboard for decision making.
+
+Data Preparation
+The project starts with three raw CSV files in the data folder:
+1. Facebook Ads
+2. Google Ads
+3. TikTok Ads
+
+Each platform uses different column names. For example, Facebook uses spend and ad set fields, while Google and TikTok use cost and different ad group naming conventions. I created a cleanup workflow that standardizes those differences into one unified table.
+
+The cleaned output is data/unified_ads_clean.csv. The cleanup script normalizes the platform names, campaign IDs, campaign names, ad group fields, spend, impressions, clicks, conversions, video views, and platform-specific fields such as Google quality score or TikTok engagement metrics.
+
+After the merge, I recompute performance metrics from the raw counts instead of trusting platform-calculated rates. This keeps the analysis consistent across every channel. The calculated metrics include CTR, CPC, CPM, CVR, CPA, ROAS, video view rate, and video completion rate.
+
+The final cleaned table contains 330 rows, with no invalid rows dropped and no duplicate rows merged. This means all three source files contributed their full data into the final analysis.
+
+Dashboard Overview
+The first section of the dashboard is the executive KPI row. I included the metrics a marketing leader would want to scan first:
+- Total spend
+- Impressions
+- Clicks
+- Conversions
+- Tracked revenue
+- Video completion rate
+
+These KPIs summarize the full paid media portfolio. Across the reporting period, the account spent about $130.2K, generated 40.5M impressions, 688.3K clicks, and 13.4K conversions. The blended CPA is about $9.75.
+
+Channel Scorecard
+The next section is the channel scorecard. I chose this view because budget allocation is one of the most important decisions in paid media.
+
+TikTok has the largest spend and impression scale. It spent about $74.3K and generated 6,750 conversions. However, its blended CPA is about $11.00, which is higher than the other channels.
+
+Google spent about $37.7K and generated 4,218 conversions. Google is the only channel with tracked conversion value in this dataset, and it returns about 5.60x ROAS overall.
+
+Facebook spent about $18.3K and generated 2,395 conversions. Facebook has the lowest blended CPA at about $7.64, making it the most efficient channel from a cost-per-conversion perspective.
+
+Business Insights
+The insight panel translates the dashboard into recommendations.
+
+First, Google brand search is the strongest revenue campaign. Search_Brand_Terms delivers about 9.81x ROAS with a CPA near $5.10. I would protect budget here because this is high-intent demand with strong tracked return.
+
+Second, Facebook is the most efficient channel by blended CPA. I would use Facebook retargeting as a benchmark for conversion efficiency and test incremental budget carefully against that CPA.
+
+Third, Facebook Conversions_Retargeting has the strongest click-to-conversion rate, around 6.3%. This suggests the audience is high intent, so I would expand fresh retargeting segments and test more creative variants.
+
+Fourth, TikTok is the biggest scale engine. It is useful for reach, engagement, and building future retargeting pools, but I would watch CPA closely before moving too much conversion budget into TikTok.
+
+Finally, Search_Generic_Terms has the highest CPA at about $24.80. I would review search terms, tighten match types, add negatives, and shift spend toward stronger Google campaigns such as brand search and shopping.
+
+Spend and Conversion Trend
+The daily trend chart compares spend and conversions over time. I used this chart to show whether performance is stable across the month or whether there are major spikes that need investigation.
+
+This view helps answer questions like:
+- Did conversion volume increase when spend increased?
+- Are there days where spend rose but conversions did not follow?
+- Is performance consistent enough to scale?
+
+Campaign Efficiency Matrix
+The campaign matrix plots CPA against conversion volume, with bubble size representing spend. I chose this because it quickly separates campaigns into decision zones.
+
+Campaigns with high conversions and low CPA are strong scale candidates. Campaigns with high CPA and lower conversion impact should be optimized, narrowed, or reduced. This gives a manager an easy way to decide where to protect budget, where to test, and where to cut waste.
+
+Video Funnel and Budget Mix
+The video funnel focuses on TikTok watch behavior. Since TikTok is a video-heavy channel, impressions and clicks alone are not enough. Video completion rate shows how much of the creative actually keeps user attention.
+
+The budget mix view groups performance by objective. I included this because campaign names often reveal strategy: awareness, search, retargeting, traffic, shopping, conversion, and influencer. This makes it easier to understand not just which channel spent money, but what the money was trying to accomplish.
+
+Performance Table
+The final table gives a campaign-level view of spend, conversions, CPA, CTR, CVR, and ROAS. I included this table because executives need summaries, but analysts and hiring managers often want to audit the numbers behind the recommendation.
+
+This table makes the dashboard transparent. A user can see exactly which campaigns are driving each insight.
+
+Closing Recommendation
+My overall recommendation is to protect high-return Google campaigns, especially brand search and shopping; keep Facebook retargeting as an efficient conversion channel; and use TikTok more strategically as a reach and engagement source while monitoring CPA.
+
+For next steps, I would add date filters, compare performance by week, and connect conversion value for Facebook and TikTok if revenue data becomes available. That would make ROAS analysis more complete across all three channels.
+
+Thank you for reviewing my dashboard walkthrough.
