@@ -7,8 +7,6 @@ from typing import Any
 
 
 """
-Recruiter-friendly data cleanup script.
-
 Goal:
 1. Load three paid-media exports from Facebook, Google, and TikTok.
 2. Standardize their different column names into one common schema.
@@ -16,8 +14,6 @@ Goal:
 4. Merge duplicate rows at the same date/platform/campaign/ad-group grain.
 5. Export a clean unified table and a channel-level summary.
 
-Run:
-    python cleanup_ads_data.py
 """
 
 

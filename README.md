@@ -2,7 +2,7 @@
 
 Static cross-channel marketing dashboard built from Facebook, Google, and TikTok ad exports.
 
-## Recruiter Quick Review
+## Quick Review
 
 | Area | Summary |
 |---|---|
@@ -46,18 +46,6 @@ The builder standardizes the three platform schemas into one auditable table:
 - Recomputes CTR, CPC, CPM, CVR, CPA, ROAS, video view rate, and video completion rate from raw counts
 - Adds platform, objective, unified ad group fields, and source file lineage
 - Sorts by date, platform, campaign, and ad group
-
-Run the build:
-
-```bash
-python scripts/build_dashboard_data.py
-```
-
-For a simpler recruiter-facing walkthrough of the merge, cleanup logic, and channel summary:
-
-```bash
-python cleanup_ads_data.py
-```
 
 ## Validation Summary
 
