@@ -4,7 +4,8 @@ Static cross-channel marketing dashboard built from Facebook, Google, and TikTok
 
 ## Deliverables
 
-- Live dashboard: https://hnguyen76.github.io/Senior-Marketing-Analyst/
+- GitHub Pages dashboard target: https://hnguyen76.github.io/Senior-Marketing-Analyst/
+- If the dashboard URL shows 404, enable GitHub Pages in repository settings with source `gh-pages` branch and folder `/`.
 - Clean unified table: [`data/unified_ads_clean.csv`](data/unified_ads_clean.csv)
 - Video walkthrough: pending recording. Replace this line with a Loom, YouTube, or Drive link after recording the walkthrough.
 
