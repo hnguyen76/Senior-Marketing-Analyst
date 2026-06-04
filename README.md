@@ -1,0 +1,46 @@
+# Senior Marketing Analyst Dashboard
+
+Static cross-channel marketing dashboard built from Facebook, Google, and TikTok ad exports.
+
+## Deliverables
+
+- Live dashboard: https://hnguyen76.github.io/Senior-Marketing-Analyst/
+- Clean unified table: [`data/unified_ads_clean.csv`](data/unified_ads_clean.csv)
+- Video walkthrough: pending recording. Replace this line with a Loom, YouTube, or Drive link after recording the walkthrough.
+
+## Project Structure
+
+- `data/01_facebook_ads.csv` - Facebook source export
+- `data/02_google_ads.csv` - Google source export
+- `data/03_tiktok_ads.csv` - TikTok source export
+- `data/unified_ads_clean.csv` - cleaned unified table generated from the three exports
+- `scripts/build_dashboard_data.py` - repeatable data cleaning and dashboard data builder
+- `assets/dashboard-data.js` - generated dashboard summary data
+- `assets/dashboard.js` - static visualization logic
+- `assets/styles.css` - dashboard styling
+- `index.html` - GitHub Pages dashboard
+
+## Data Cleaning
+
+The builder standardizes the three platform schemas into one auditable table:
+
+- Normalizes platform spend columns: Facebook `spend`, Google/TikTok `cost`
+- Normalizes ad group columns: Facebook `ad_set_*`, Google `ad_group_*`, TikTok `adgroup_*`
+- Recomputes CTR, CPC, CPM, CVR, CPA, ROAS, video view rate, and video completion rate from raw counts
+- Adds platform, objective, unified ad group fields, and source file lineage
+- Sorts by date, platform, campaign, and ad group
+
+Run the build:
+
+```bash
+python scripts/build_dashboard_data.py
+```
+
+## Key Insights
+
+- Total spend: $130.2K across 40.5M impressions, 688.3K clicks, and 13.4K conversions.
+- Facebook has the lowest blended CPA at $7.64, led by `Conversions_Retargeting`.
+- Google is the only channel with tracked revenue data and returns 5.60x ROAS overall.
+- `Search_Brand_Terms` is the strongest revenue campaign with 9.81x ROAS and a $5.10 CPA.
+- TikTok drives the largest impression and click scale, but has the highest blended CPA at $11.00.
+- `Search_Generic_Terms` has the highest CPA at $24.80 and should be narrowed or bid down.

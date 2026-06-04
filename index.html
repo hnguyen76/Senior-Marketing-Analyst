@@ -1,0 +1,124 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Senior Marketing Analyst Dashboard</title>
+    <meta
+      name="description"
+      content="Static cross-channel marketing dashboard built from Facebook, Google, and TikTok ads data."
+    >
+    <link rel="stylesheet" href="assets/styles.css">
+  </head>
+  <body>
+    <main class="dashboard-shell">
+      <header class="topbar">
+        <div class="title-block">
+          <p class="eyebrow">Cross-channel ads performance</p>
+          <h1>Senior Marketing Analyst Dashboard</h1>
+          <p id="periodLabel" class="subtitle">Loading reporting period...</p>
+        </div>
+        <div class="source-panel">
+          <span id="generatedDate">Generated from cleaned CSV</span>
+          <a class="download-link" href="data/unified_ads_clean.csv" download>Download clean data</a>
+        </div>
+      </header>
+
+      <section id="kpiGrid" class="kpi-grid" aria-label="Executive performance metrics"></section>
+
+      <section class="two-column">
+        <article class="section-block">
+          <div class="section-heading">
+            <div>
+              <p class="eyebrow">Budget and return</p>
+              <h2>Channel Scorecard</h2>
+            </div>
+            <span class="section-note">Sorted by spend</span>
+          </div>
+          <div id="channelScorecard" class="scorecard-list"></div>
+        </article>
+
+        <article class="section-block insight-block">
+          <div class="section-heading">
+            <div>
+              <p class="eyebrow">Decision signals</p>
+              <h2>Business Insights</h2>
+            </div>
+          </div>
+          <ol id="insightList" class="insight-list"></ol>
+        </article>
+      </section>
+
+      <section class="section-block chart-section">
+        <div class="section-heading">
+          <div>
+            <p class="eyebrow">Daily performance</p>
+            <h2>Spend and Conversion Trend</h2>
+          </div>
+          <div class="legend-row">
+            <span><i class="legend-swatch spend"></i>Spend</span>
+            <span><i class="legend-swatch conversions"></i>Conversions</span>
+          </div>
+        </div>
+        <div id="dailyTrend" class="chart-frame" role="img" aria-label="Daily spend bars and conversion trend line"></div>
+      </section>
+
+      <section class="two-column">
+        <article class="section-block chart-section">
+          <div class="section-heading">
+            <div>
+              <p class="eyebrow">Campaign efficiency</p>
+              <h2>CPA vs. Conversion Scale</h2>
+            </div>
+            <span class="section-note">Bubble size = spend</span>
+          </div>
+          <div id="campaignMatrix" class="chart-frame matrix-frame" role="img" aria-label="Campaign CPA and conversion scatter plot"></div>
+        </article>
+
+        <article class="section-block">
+          <div class="section-heading">
+            <div>
+              <p class="eyebrow">Creative and objective mix</p>
+              <h2>Video Funnel and Budget Mix</h2>
+            </div>
+          </div>
+          <div id="videoFunnel" class="funnel-list"></div>
+          <div id="objectiveMix" class="objective-list"></div>
+        </article>
+      </section>
+
+      <section class="section-block">
+        <div class="section-heading">
+          <div>
+            <p class="eyebrow">Campaign prioritization</p>
+            <h2>Performance Table</h2>
+          </div>
+          <span class="section-note">All channels, cleaned and standardized</span>
+        </div>
+        <div class="table-wrap">
+          <table>
+            <thead>
+              <tr>
+                <th>Platform</th>
+                <th>Campaign</th>
+                <th>Objective</th>
+                <th>Spend</th>
+                <th>Conversions</th>
+                <th>CPA</th>
+                <th>CTR</th>
+                <th>CVR</th>
+                <th>ROAS</th>
+              </tr>
+            </thead>
+            <tbody id="campaignTable"></tbody>
+          </table>
+        </div>
+      </section>
+
+      <section id="dataQuality" class="quality-strip" aria-label="Data quality summary"></section>
+    </main>
+
+    <script src="assets/dashboard-data.js"></script>
+    <script src="assets/dashboard.js"></script>
+  </body>
+</html>
