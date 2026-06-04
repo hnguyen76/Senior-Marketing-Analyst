@@ -1,0 +1,71 @@
+{
+  "name": "Senior Marketing Analyst",
+  "dataColors": [
+    "#3167B1",
+    "#008B84",
+    "#D95D4F",
+    "#C98B17",
+    "#2F7D4F",
+    "#7258B5",
+    "#20242A",
+    "#607080"
+  ],
+  "background": "#F4F6F8",
+  "foreground": "#19212A",
+  "tableAccent": "#008B84",
+  "visualStyles": {
+    "*": {
+      "*": {
+        "title": [
+          {
+            "fontColor": {
+              "solid": {
+                "color": "#19212A"
+              }
+            },
+            "fontSize": 12,
+            "fontFamily": "Segoe UI Semibold"
+          }
+        ],
+        "background": [
+          {
+            "color": {
+              "solid": {
+                "color": "#FFFFFF"
+              }
+            },
+            "transparency": 0
+          }
+        ],
+        "border": [
+          {
+            "show": true,
+            "color": {
+              "solid": {
+                "color": "#DBE2EA"
+              }
+            },
+            "radius": 4
+          }
+        ]
+      }
+    }
+  },
+  "textClasses": {
+    "title": {
+      "fontFace": "Segoe UI Semibold",
+      "fontSize": 18,
+      "color": "#19212A"
+    },
+    "label": {
+      "fontFace": "Segoe UI",
+      "fontSize": 10,
+      "color": "#607080"
+    },
+    "callout": {
+      "fontFace": "Segoe UI Semibold",
+      "fontSize": 28,
+      "color": "#19212A"
+    }
+  }
+}

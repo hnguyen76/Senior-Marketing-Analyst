@@ -1,0 +1,135 @@
+-- Model assumption:
+-- Import data/unified_ads_clean.csv and rename the table to Ads.
+-- If you do not use power_query_unified_ads_clean.m, add these calculated columns first:
+--
+-- campaign_display_name = SUBSTITUTE ( Ads[campaign_name], "_", " " )
+-- ad_group_display_name = SUBSTITUTE ( Ads[ad_group_name], "_", " " )
+
+Total Spend =
+SUM ( Ads[spend] )
+
+Total Impressions =
+SUM ( Ads[impressions] )
+
+Total Clicks =
+SUM ( Ads[clicks] )
+
+Total Conversions =
+SUM ( Ads[conversions] )
+
+Tracked Revenue =
+SUM ( Ads[conversion_value] )
+
+Blended CTR =
+DIVIDE ( [Total Clicks], [Total Impressions] )
+
+Blended CPC =
+DIVIDE ( [Total Spend], [Total Clicks] )
+
+Blended CPM =
+DIVIDE ( [Total Spend] * 1000, [Total Impressions] )
+
+Blended CVR =
+DIVIDE ( [Total Conversions], [Total Clicks] )
+
+Blended CPA =
+DIVIDE ( [Total Spend], [Total Conversions] )
+
+Blended ROAS =
+DIVIDE ( [Tracked Revenue], [Total Spend] )
+
+Total Video Views =
+SUM ( Ads[video_views] )
+
+Video View Rate =
+DIVIDE ( [Total Video Views], [Total Impressions] )
+
+Video Completion Rate =
+DIVIDE ( SUM ( Ads[video_watch_100] ), [Total Video Views] )
+
+Total Engagements =
+SUM ( Ads[engagements] )
+
+Engagement Rate =
+DIVIDE ( [Total Engagements], [Total Impressions] )
+
+Spend Share =
+DIVIDE (
+    [Total Spend],
+    CALCULATE ( [Total Spend], ALL ( Ads[platform] ) )
+)
+
+Average Frequency =
+AVERAGE ( Ads[frequency] )
+
+Average Quality Score =
+AVERAGE ( Ads[quality_score] )
+
+Average Search Impression Share =
+AVERAGE ( Ads[search_impression_share] )
+
+Campaign Rank by CPA =
+RANKX (
+    ALLSELECTED ( Ads[campaign_display_name] ),
+    [Blended CPA],
+    ,
+    ASC,
+    DENSE
+)
+
+Campaign Rank by Conversions =
+RANKX (
+    ALLSELECTED ( Ads[campaign_display_name] ),
+    [Total Conversions],
+    ,
+    DESC,
+    DENSE
+)
+
+CPA Efficiency Band =
+SWITCH (
+    TRUE (),
+    ISBLANK ( [Blended CPA] ), "No conversions",
+    [Blended CPA] <= 8, "Scale / protect",
+    [Blended CPA] <= 15, "Monitor",
+    "Optimize / reduce"
+)
+
+Video Funnel Rate =
+SWITCH (
+    SELECTEDVALUE ( 'Video Funnel Stage'[Stage] ),
+    "25% watched", DIVIDE ( SUM ( Ads[video_watch_25] ), [Total Video Views] ),
+    "50% watched", DIVIDE ( SUM ( Ads[video_watch_50] ), [Total Video Views] ),
+    "75% watched", DIVIDE ( SUM ( Ads[video_watch_75] ), [Total Video Views] ),
+    "100% watched", DIVIDE ( SUM ( Ads[video_watch_100] ), [Total Video Views] )
+)
+
+-- Optional calculated table for the video funnel chart:
+-- Modeling > New table
+--
+-- Video Funnel Stage =
+-- DATATABLE (
+--     "Stage", STRING,
+--     "Sort", INTEGER,
+--     {
+--         { "25% watched", 1 },
+--         { "50% watched", 2 },
+--         { "75% watched", 3 },
+--         { "100% watched", 4 }
+--     }
+-- )
+--
+-- Sort Video Funnel Stage[Stage] by Video Funnel Stage[Sort].
+
+-- Optional date table:
+-- Modeling > New table
+--
+-- Date =
+-- ADDCOLUMNS (
+--     CALENDAR ( MIN ( Ads[date] ), MAX ( Ads[date] ) ),
+--     "Year", YEAR ( [Date] ),
+--     "Month Number", MONTH ( [Date] ),
+--     "Month", FORMAT ( [Date], "MMM yyyy" )
+-- )
+--
+-- Create a relationship from Date[Date] to Ads[date].
