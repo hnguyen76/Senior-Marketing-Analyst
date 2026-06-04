@@ -1,2 +1,9 @@
 __pycache__/
 *.py[cod]
+powerbi/README.md
+powerbi/*.dax
+powerbi/*.m
+powerbi/*.json
+powerbi/*.csx
+powerbi/Dasboard.pbix
+powerbi/~$*.pbix
