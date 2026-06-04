@@ -22,6 +22,24 @@ After the merge, I recompute performance metrics from the raw counts instead of 
 
 The final cleaned table contains 330 rows, with no invalid rows dropped and no duplicate rows merged. This means all three source files contributed their full data into the final analysis.
 
+Visualization Tools and Design Choices
+For the visualization layer, I built the dashboard as a static web dashboard using HTML, CSS, and JavaScript. I did not use Tableau, Power BI, Chart.js, Plotly, or D3.js for this version. The goal was to show that I can build a lightweight dashboard from the ground up and make the full logic visible in the repository.
+
+The dashboard reads from a generated JavaScript data file called assets/dashboard-data.js. That file is created from the cleaned CSV output, so the visualization layer is separated from the data cleanup layer. This makes the project easier to audit: recruiters can review the Python cleanup script, the cleaned CSV, the generated summary data, and the front-end dashboard logic separately.
+
+For the charts, I used SVG generated with JavaScript. SVG is a good fit for a static GitHub Pages dashboard because it loads quickly, does not require external libraries, and gives full control over layout, labels, colors, and chart shapes.
+
+I used different visualizations for different business questions:
+- KPI cards summarize the most important executive metrics at the top of the page.
+- The channel scorecard compares spend, conversions, and CPA by platform for budget allocation.
+- The daily trend chart combines spend bars with a conversion line to show whether spend changes are translating into performance.
+- The campaign efficiency matrix uses CPA, conversion volume, and spend bubble size to identify which campaigns should be scaled, optimized, or reduced.
+- The video funnel focuses on TikTok watch behavior because TikTok is a video-first channel.
+- The objective mix shows how spend is distributed by marketing strategy, such as search, retargeting, traffic, shopping, conversion, awareness, and influencer activity.
+- The campaign table gives a detailed audit trail behind the dashboard recommendations.
+
+I chose this structure because a recruiter or stakeholder can quickly understand both sides of the project: the technical process used to clean and merge the data, and the business logic used to choose each visualization.
+
 Dashboard Overview
 The first section of the dashboard is the executive KPI row. I included the metrics a marketing leader would want to scan first:
 - Total spend
